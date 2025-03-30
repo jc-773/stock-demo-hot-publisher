@@ -12,33 +12,33 @@ import reactor.core.publisher.Flux;
 public class StockPriceImplementation implements StockPriceService {
 
     @Override
-    public Flux<Integer> emitApplePrice() {
+    public Flux<String> emitApplePrice() {
       return Flux.generate(syncSink -> {
             var randomPrice = Utils.faker().random().nextInt(65, 120);
-            syncSink.next(randomPrice);
+            syncSink.next("Apple: " + randomPrice);
       })
       .delayElements(Duration.ofSeconds(10))
-      .cast(Integer.class);
+      .cast(String.class);
     }
 
     @Override
-    public Flux<Integer> emitMicrosoftPrice() {
+    public Flux<String> emitMicrosoftPrice() {
         return Flux.generate(syncSink -> {
             var randomPrice = Utils.faker().random().nextInt(115, 220);
-            syncSink.next(randomPrice);
+            syncSink.next("Microsoft: " + randomPrice);
       })
       .delayElements(Duration.ofSeconds(10))
-      .cast(Integer.class);
+      .cast(String.class);
     }
 
     @Override
-    public Flux<Integer> emitTeslaPrice() {
+    public Flux<String> emitTeslaPrice() {
         return Flux.generate(syncSink -> {
             var randomPrice = Utils.faker().random().nextInt(265, 520);
-            syncSink.next(randomPrice);
+            syncSink.next("Tesla: " + randomPrice);
       })
       .delayElements(Duration.ofSeconds(10))
-      .cast(Integer.class);
+      .cast(String.class);
     }
     
 }

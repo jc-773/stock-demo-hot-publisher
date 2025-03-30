@@ -6,6 +6,8 @@ import com.publish.stock_microservices.publisher.StockPriceImplementation;
 
 import reactor.core.publisher.Flux;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,18 +24,18 @@ public class StockFeedController {
     }
     
     @GetMapping(value="/live/stock/feed/apple", produces=MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Integer> getAppleStockPrice() {
-        return stockPriceService.emitApplePrice();
+    public Flux<String> getAppleStockPrice() {
+        return stockPriceService.emitApplePrice().share();
     }
 
     @GetMapping(value="/live/stock/feed/microsoft", produces=MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Integer> getMicrosoftStockPrice() {
-        return stockPriceService.emitMicrosoftPrice();
+    public Flux<String> getMicrosoftStockPrice() {
+        return stockPriceService.emitMicrosoftPrice().share();
     }
 
     @GetMapping(value="/live/stock/feed/tesla", produces=MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Integer> getTeslaStockPrice() {
-        return stockPriceService.emitTeslaPrice();
+    public Flux<String> getTeslaStockPrice() {
+        return stockPriceService.emitTeslaPrice().share();
     }
     
 }
