@@ -24,17 +24,17 @@ public class StockFeedController {
     }
     
     @GetMapping(value="/live/stock/feed/apple", produces=MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<String> getAppleStockPrice() {
+    public Flux<Integer> getAppleStockPrice() {
         return stockPriceService.emitApplePrice().share();
     }
 
     @GetMapping(value="/live/stock/feed/microsoft", produces=MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<String> getMicrosoftStockPrice() {
+    public Flux<Integer> getMicrosoftStockPrice() {
         return stockPriceService.emitMicrosoftPrice().share();
     }
 
     @GetMapping(value="/live/stock/feed/tesla", produces=MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<String> getTeslaStockPrice() {
+    public Flux<Integer> getTeslaStockPrice() {
         return stockPriceService.emitTeslaPrice().share();
     }
     
