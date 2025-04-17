@@ -18,7 +18,7 @@ public class StockPriceImplementation implements StockPriceService {
             var randomPrice = Utils.faker().random().nextInt(65, 120);
             syncSink.next(randomPrice);
       })
-      .delayElements(Duration.ofSeconds(10))
+      .delayElements(Duration.ofSeconds(5))
       .cast(Integer.class);
     }
 
@@ -28,7 +28,7 @@ public class StockPriceImplementation implements StockPriceService {
             var randomPrice = Utils.faker().random().nextInt(115, 220);
             syncSink.next(randomPrice);
       })
-      .delayElements(Duration.ofSeconds(10))
+      .delayElements(Duration.ofSeconds(5))
       .cast(Integer.class);
     }
 
@@ -38,7 +38,7 @@ public class StockPriceImplementation implements StockPriceService {
             var randomPrice = Utils.faker().random().nextInt(265, 520);
             syncSink.next(randomPrice);
       })
-      .delayElements(Duration.ofSeconds(10))
+      .delayElements(Duration.ofSeconds(5))
       .cast(Integer.class);
     }
     
